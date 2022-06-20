@@ -12,7 +12,7 @@ const UseEffectBasics = () => {
       
       document.title = `New (${value})`;
     }
-  })
+  }, [value])
   
   
   return (<>
