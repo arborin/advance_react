@@ -6,8 +6,7 @@ const UseStateObject = () => {
   console.log(person)
   
   const changeName = () => {
-    
-
+  
     setPerson({...person, message: 'jemal'})
   }
   
