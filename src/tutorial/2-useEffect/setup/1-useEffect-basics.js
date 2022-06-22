@@ -14,6 +14,10 @@ const UseEffectBasics = () => {
     }
   }, [value])
   
+  useEffect(()=>{
+    console.log("HIHIHI")
+  })
+  
   
   return (<>
     <h1>{value}</h1>
