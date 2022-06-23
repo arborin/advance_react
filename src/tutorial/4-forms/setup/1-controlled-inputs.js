@@ -9,11 +9,23 @@ const ControlledInputs = () => {
     
     const [firstName, setFirstName] = useState('');
     const [email, setEmail] = useState('');
+    const [people, setPeople] = useState([]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(firstName);
-        console.log(email);
+        
+        if(firstName && email){
+            console.log('SUMBIT FORM');
+            const person = {id: new Date().getTime().toString(),  firstName, email: email }
+            console.log(person);
+            setPeople((people)=>{
+                return [...people, person]
+            })
+            setFirstName('')
+            setEmail('')
+        }else{
+            console.log("Empty Values");
+        }
     }
 
 
@@ -28,8 +40,18 @@ const ControlledInputs = () => {
                     <label htmlFor='email'>Email:</label>
                     <input type='text' id='email' name='email' value={email} onChange={(e) => setEmail(e.target.value)}/>
                 </div>
-                <button type='submit'>Add Person</button>
+                <button type='submit'>add</button>
             </form>
+            {
+                people.map((person)=>{
+                    const {id, firstName, email } = person
+                    
+                    return (<div key = {id} className='item'>
+                        <h4>{firstName}</h4>
+                        <p>{email}</p>
+                        </div>)
+                }) 
+            }
         </article>
     )
 };
