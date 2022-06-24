@@ -3,17 +3,27 @@ import Modal from './Modal';
 import { data } from '../../../data';
 // reducer function
 
+const reducer = (state, action) => {
+  
+}
+
+const defaultState = {
+  people: data,
+  isModalOpen: false,
+  modalContent: 'Hello world'
+}
+
 const Index = () => {
   const [name, setName] = useState('')
-  const [people, setPeople] = useState(data)
+  const [state, dispatch] = useReducer(reducer)
   const [showModal, setShowModal] = useState(false)
   
   const handleSubmit = (e) => {
     e.preventDefault()
     if(name){
       setShowModal(true)
-      setPeople([...people, {id:new Date().getTime().toString(), name}])
-      setName('')
+      // setPeople([...people, {id:new Date().getTime().toString(), name}])
+      // setName('')
     }else{
       setShowModal(true)
     }
